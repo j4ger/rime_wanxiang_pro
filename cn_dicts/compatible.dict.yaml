@@ -4,7 +4,7 @@
 #兼容词库，对于多字词汇两种读音的场景，手动维护到本表以及一些其他的杂项
 ---
 name: compatible
-version: "2025-02-18 20:17"
+version: "2025-02-18 22:12"
 sort: by_weight
 ...
 就得到	jiù;wy;wy;yj;ih;yu;go;yi;wy; děi;rc;ic;xc;hk;hi;wk;tj;rc; dào;gd;ad;dv;di;mn;yp;gc;vd;	498

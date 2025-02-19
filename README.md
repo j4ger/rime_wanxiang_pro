@@ -169,7 +169,7 @@ set_shuru_schema:
   万	wjap
   为了增强整句中单字性能，通过增加o或者/的方式还可以获得以下输出
   万	wjago
-  万	wjapo
+  万	wjapo    #o其实为了一些手机输入法不方便使用符号作为增强按键，但是可能会存在 类似于：你心理想的： ui uio，实际的：uiuio只输出一个字
   万	wjag/
   万	wjap/
   ```

@@ -10,10 +10,9 @@
 
 **万象词库中的带声调拼音标注+词组构成+词频是整个万象项目的核心，是使用体验的基石，方案的其它功能皆可自定义，我希望使用者可以基于词库+转写的方式获得输入体验** [万象词库问题收集反馈表](https://docs.qq.com/smartsheet/DWHZsdnZZaGh5bWJI?viewId=vUQPXH&tab=BB08J2)
 ---
-
 效果大赏
 
-![效果.png](https://storage.deepin.org/thread/202502200328333300_效果.png)
+![效果.png](https://storage.deepin.org/thread/202502200358104987_效果.png)
 
 ---
 #### 使用方法：

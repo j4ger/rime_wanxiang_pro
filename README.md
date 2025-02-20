@@ -283,9 +283,15 @@ set_shuru_schema:
      **字符集过滤：** 默认开启过滤，写在charset.dict.yaml的就是可以通过的字表，默认为8105+𰻞𰻞，如果你想什么字在小字集模式可以通过可以写在这里，配套开关【小、大】，快捷键Ctrl+g
      更多功能可以编辑方案文件依据注释说明开启
     
-6. **墨奇音形:**
+5. **墨奇音形:**
 
     墨奇音形是一个基于一种新型开源的字形描述信息、递归拆分至最小字形，最后取首末双形音托的方案。查墨奇码的拆分：加群696353204 ②群10885687 输入“墨奇码拆 想拆的字”。支持4万字
 
    [拆分规则](https://github.com/gaboolic/rime-shuangpin-fuzhuma/wiki/%E5%A2%A8%E5%A5%87%E7%A0%81%E6%8B%86%E5%88%86%E8%A7%84%E5%88%99)[](https://github.com/gaboolic/rime-shuangpin-fuzhuma/wiki/%E5%A2%A8%E5%A5%87%E7%A0%81%E6%8B%86%E5%88%86%E8%A7%84%E5%88%99)
-
+6. **鸣谢:**
+   项目英文词库及部分lua来自"[rime-ice](https://github.com/iDvel/rime-ice)"
+   拼音标注来自万象词库与语法模型项目，并在该项目下进行鸣谢！
+   感谢网友的热情提报问题，使得模型和词库体验进一步提升。
+7. **赞赏:**
+   如果觉得项目好用，可以请AMZ喝咖啡
+    ![赞赏](https://github.com/amzxyz/rime_wanxiang_pro/blob/main/.github/%E8%B5%9E%E8%B5%8F.png)

@@ -294,4 +294,5 @@ set_shuru_schema:
    感谢网友的热情提报问题，使得模型和词库体验进一步提升。
 7. **赞赏:**
    如果觉得项目好用，可以请AMZ喝咖啡
-    ![赞赏](https://github.com/amzxyz/rime_wanxiang_pro/blob/main/.github/%E8%B5%9E%E8%B5%8F.png)
+   <img src="https://github.com/amzxyz/rime_wanxiang_pro/blob/main/.github/%E8%B5%9E%E8%B5%8F.png" width="400">   
+

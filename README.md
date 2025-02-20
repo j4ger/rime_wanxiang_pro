@@ -300,5 +300,5 @@ set_shuru_schema:
 7. **赞赏:**
    如果觉得项目好用，可以请AMZ喝咖啡
    
-   <img src="https://github.com/amzxyz/rime_wanxiang_pro/blob/main/.github/%E8%B5%9E%E8%B5%8F.png" width="400">   
+   <img src="https://github.com/amzxyz/rime_wanxiang_pro/blob/main/.github/%E8%B5%9E%E8%B5%8F.jpeg" width="400">   
 

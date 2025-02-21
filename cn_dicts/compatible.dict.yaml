@@ -4,7 +4,7 @@
 #兼容词库，对于多字词汇两种读音的场景，手动维护到本表以及一些其他的杂项
 ---
 name: compatible
-version: "2025-02-20 19:08"
+version: "2025-02-21 14:08"
 sort: by_weight
 ...
 就得到	jiù;wy;wy;yj;ih;yu;go;yi;wy; děi;rc;ic;xc;hk;hi;wk;tj;rc; dào;gd;ad;dv;di;mn;yp;gc;vd;	498
@@ -23,8 +23,10 @@ sort: by_weight
 多行	duō;xx;xx;xx;ff;ni;ll;qq;xx; háng;rd;ii;xd,xi;hs;hn;px;tf;rd;	491
 不了了	bù;ab;ad;ad,ax;dh;mf;cb;i,gi;ad; liǎo;al;vl;aa,vu;rp;nn;rl;b,bn;vv; liǎo;al;vl;aa,vu;rp;nn;rl;b,bn;vv;	542
 不了了	bù;ab;ad;ad,ax;dh;mf;cb;i,gi;ad; liǎo;al;vl;aa,vu;rp;nn;rl;b,bn;vv; le;al;vl;aa,vu;rp;nn;rl;b,bn;vv;	413
-肚子	dù;ot;ot;ot;lg;bg;vg;ef;ot; zi;la;va;aa,vh;aa;nd;hi;bb;va;	695
+肚子	dù;ot;ot;ot;lg;bg;vg;ef;ot; zi;la;va;aa,vh;aa;nd;hi;bb;va;	650
 肚子	dǔ;ot;ot;ot;lg;bg;vg;ef;ot; zi;la;va;aa,vh;aa;nd;hi;bb;va;	312
+落了	là;ck;ck;cl;zo,rr;tr;ls;ai;ck; le;al;vl;aa,vu;rp;nn;rl;b,bn;vv;	542
+落了	luò;ck;ck;cl;zo,rr;tr;ls;ai;ck; le;al;vl;aa,vu;rp;nn;rl;b,bn;vv;	603
 迫降	pò;zb;zb;zb;sq;ya;uu;rp;zb; xiáng;ef;el;ef,ej;bp;nq;tv;bt;ea;	120
 迫降	pò;zb;zb;zb;sq;ya;uu;rp;zb; jiàng;ef;el;ef,ej;bp;nq;tv;bt;ea;	523
 浅浅	jiān;dj;dj;dj;ka;ej;kp;ig;dg; jiān;dj;dj;dj;ka;ej;kp;ig;dg;	471
@@ -89,15 +91,24 @@ sort: by_weight
 不长	bù;ab;ad;ad,ax;dh;mf;cb;i,gi;ad; zhǎng;pn;pn;pd;uh;po;pc;ta;pn;	329
 长的	cháng;pn;pn;pd;uh;po;pc;ta;pn; de;bu;bu;bu;sh;hi,xx;ui;r,rq;bu;	802
 长牙	cháng;pn;pn;pd;uh;po;pc;ta;pn; yá;gp,ac;ap;ap;du;mh;ly;ah;ap;	84
+长头发	cháng;pn;pn;pd;uh;po;pc;ta;pn; tóu;dd;dd;dd;hx;yk,xk;wm;ud;dd; fā;fy;vd;ay,fd,vy,yd;rh;ie;si;v,nt;vy;	503
+长头发	zhǎng;pn;pn;pd;uh;po;pc;ta;pn; tóu;dd;dd;dd;hx;yk,xk;wm;ud;dd; fā;fy;vd;ay,fd,vy,yd;rh;ie;si;v,nt;vy;	503
+长尾巴	cháng;pn;pn;pd;uh;po;pc;ta;pn; wěi;um;um;um;qr;su;cv;nt;um; bā;sl;vv;ag,kg,vg;tt;au;mb;cn;vv;	399
+长尾巴	zhǎng;pn;pn;pd;uh;po;pc;ta;pn; wěi;um;um;um;qr;su;cv;nt;um; bā;sl;vv;ag,kg,vg;tt;au;mb;cn;vv;	399
+长细纹	cháng;pn;pn;pd;uh;po;pc;ta;pn; xì;st;st;st;ew;vw;iq;xl;st; wén;sw;sw;sw;ej;vk;iv;xy;sx;	250
+长细纹	zhǎng;pn;pn;pd;uh;po;pc;ta;pn; xì;st;st;st;ew;vw;iq;xl;st; wén;sw;sw;sw;ej;vk;iv;xy;sx;	250
+长羽毛	cháng;pn;pn;pd;uh;po;pc;ta;pn; yǔ;xx;xx;xx;dd;sm;zv;nn;xx; máo;pv;pv;pg;ur;hu;vm;tf;pv;	252
+长羽毛	zhǎng;pn;pn;pd;uh;po;pc;ta;pn; yǔ;xx;xx;xx;dd;sm;zv;nn;xx; máo;pv;pv;pg;ur;hu;vm;tf;pv;	252
+区队长	qū;kx;kx;ki;dr;sk;nb;aq;kx; duì;er;er;er;be;no;tj;bw;er; zhǎng;pn;pn;pd;uh;po;pc;ta;pn;
 重活	chóng;ql;pa;pa,ql;sg;hg;ld;tg;pa; huó;du;dk;du;ko;er;ka;it;dk;	120
 重天	chóng;ql;pa;pa,ql;sg;hg;ld;tg;pa; tiān;ad;ad;ad;ue;mk;fm;gd;ad;	497
-穿着	chuān;by;by;xy,by;iu;jh;el;pw;gy; zhe;yo;yo;yo;fs;tu;gq;ud;em;	1000
+穿着	chuān;by;by;xy,by;iu;jh;el;pw;gy; zhe;yo;yo;yo;fs;tu;gq;ud;em;	742
 穿着	chuān;by;by;xy,by;iu;jh;el;pw;gy; zhuó;yo;yo;yo;fs;tu;gq;ud;em;	644
 调配	diào;yk;yk;yv;co;ir;sd;ym;yk; pèi;yj;yj;yj;pt;mu;yv;sg;yj;	688
 更为	gèng;an;an;ad,ag;dy;mk;fb;gj;an; wèi;ld;dd;dd;uu;ii;ii;o,yl;dd;	965
 更为	gēng;an;an;ad,ag;dy;mk;fb;gj;an; wéi;ld;dd;dd;uu;ii;ii;o,yl;dd;	915
 行长	háng;rd;ii;xd,xi;hs;hn;px;tf;rd; zhǎng;pn;pn;pd;uh;po;pc;ta;pn;	466
-见长	jiàn;ke;ke;ag,ek,ke;pk;bu;ej;mq;av; cháng;pn;pn;pd;uh;po;pc;ta;pn;	472
+见长	jiàn;ke;ke;ag,ek,ke;pk;bu;ej;mq;av; cháng;pn;pn;pd;uh;po;pc;ta;pn;	510
 见长	jiàn;ke;ke;ag,ek,ke;pk;bu;ej;mq;av; zhǎng;pn;pn;pd;uh;po;pc;ta;pn;	621
 落下	là;ck;ck;cl;zo,rr;tr;ls;ai;ck; xià;ab;ab;ab,ad;dh;my;fy;gh;ab;	764
 累累	léi;tx;tx;st,ts;wi;wf;qi;lx;tx; léi;tx;tx;st,ts;wi;wf;qi;lx;tx;	577
@@ -129,7 +140,7 @@ sort: by_weight
 血晕	xiě;pm;pm;pa,pm;ua;ht;ta;tl;pm; yùn;oi;oi;oj;vt;aq;oy;jp;oi;	222
 血晕	xuè;pm;pm;pa,pm;ua;ht;ta;tl;pm; yùn;oi;oi;oj;vt;aq;oy;jp;oi;	68
 一行	yì;aa;aa;aa;dd;mm;fi;g,gg;aa; háng;rd;ii;xd,xi;hs;hn;px;tf;rd;	620
-一通	yí;aa;aa;aa;dd;mm;fi;g,gg;aa; tòng;zy;zy;zy;pq;yb;ku;ce;zy;	710
+一通	yí;aa;aa;aa;dd;mm;fi;g,gg;aa; tòng;zy;zy;zy;pq;yb;ku;ce;zy;	700
 一通	yì;aa;aa;aa;dd;mm;fi;g,gg;aa; tōng;zy;zy;zy;pq;yb;ku;ce;zy;	608
 一行	yì;aa;aa;aa;dd;mm;fi;g,gg;aa; xíng;rd;ii;xd,xi;hs;hn;px;tf;rd;	530
 越长	yuè;tl;tv;zy;qh;gv;pn;fh;tg; cháng;pn;pn;pd;uh;po;pc;ta;pn;	271

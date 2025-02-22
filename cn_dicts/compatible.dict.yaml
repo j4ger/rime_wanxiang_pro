@@ -4,9 +4,11 @@
 #兼容词库，对于多字词汇两种读音的场景，手动维护到本表以及一些其他的杂项
 ---
 name: compatible
-version: "2025-02-23 00:14"
+version: "2025-02-23 00:40"
 sort: by_weight
 ...
+长点儿	cháng;pn;pn;pd;uh;po;pc;ta;pn; diǎn;vh;lh;hv;pn;yf,xf;yc;hk;ve; ér;pv;pv;pg;kk;lu;pe;qt;pv;	293
+长点儿	zhǎng;pn;pn;pd;uh;po;pc;ta;pn; diǎn;vh;lh;hv;pn;yf,xf;yc;hk;ve; ér;pv;pv;pg;kk;lu;pe;qt;pv;	293
 就得到	jiù;wy;wy;yj;ih;yu;go;yi;wy; děi;rc;ic;xc;hk;hi;wk;tj;rc; dào;gd;ad;dv;di;mn;yp;gc;vd;	498
 就得到	jiù;wy;wy;yj;ih;yu;go;yi;wy; dé;rc;ic;xc;hk;hi;wk;tj;rc; dào;gd;ad;dv;di;mn;yp;gc;vd;	498
 掉色	diào;fu;fu;fv;js;qj;un;rh;fu; sè;db;db;db;gt;nu;xm;qc;eb;	552

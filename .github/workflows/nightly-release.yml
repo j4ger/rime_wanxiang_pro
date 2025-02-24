@@ -14,49 +14,55 @@ jobs:
     runs-on: ubuntu-22.04
 
     steps:
-      # 检出代码
+      # ✅ 1. 检出当前仓库代码
       - name: Checkout repository
         uses: actions/checkout@v4
 
-      # 检查是否需要更新
-      - name: Check if cn_dicts or wanxiang-lts-zh-hans.gram has changes
-        id: check_changes
+      # ✅ 2. 获取 "source-repo" 的最新 Release 文件 URL
+      - name: Get latest release from source repo
+        id: get_source_release
         run: |
-          if git diff --quiet HEAD HEAD~1 -- cn_dicts wanxiang-lts-zh-hans.gram; then
-            echo "SKIP=true" >> $GITHUB_ENV
-          else
-            echo "SKIP=false" >> $GITHUB_ENV
-          fi
+          SOURCE_REPO="amzxyz/RIME-LMDG" # ⚠️ 这里替换为你的目标仓库
+          FILE_NAME="wanxiang-lts-zh-hans.gram" # 需要获取的文件名
 
-      # 条件跳过任务
-      - name: Skip if no changes
-        if: env.SKIP == 'true'
-        run: echo "No changes detected in 'cn_dicts' or 'wanxiang-lts-zh-hans.gram'. Skipping release process."
+          # 获取最新 Release 的下载 URL
+          API_URL="https://api.github.com/repos/$SOURCE_REPO/releases/latest"
+          DOWNLOAD_URL=$(curl -s $API_URL | jq -r ".assets[] | select(.name==\"$FILE_NAME\") | .browser_download_url")
 
-      # 打包词库文件（但不包含 wanxiang-lts-zh-hans.gram）
-      - name: Pack cn_dicts
-        if: env.SKIP != 'true'
-        run: |
-          mkdir -p dist
-          echo "Packing cn_dicts..."
-          if [ -d "cn_dicts" ]; then
-            zip -r dist/cn_dicts.zip cn_dicts
-            echo "Packing completed: dist/cn_dicts.zip"
-          else
-            echo "Error: cn_dicts folder does not exist."
+          if [ -z "$DOWNLOAD_URL" ]; then
+            echo "❌ 未找到 $FILE_NAME，终止运行"
             exit 1
           fi
 
-      # 删除旧的 Release 和 Tag（如果存在）
+          echo "🔗 下载地址: $DOWNLOAD_URL"
+          echo "DOWNLOAD_URL=$DOWNLOAD_URL" >> $GITHUB_ENV
+
+      # ✅ 3. 下载该文件
+      - name: Download release file
+        run: |
+          wget -O wanxiang-lts-zh-hans.gram "$DOWNLOAD_URL"
+          ls -lah wanxiang-lts-zh-hans.gram # 确保文件下载成功
+
+      # ✅ 4. 打包 cn_dicts.zip（不包含 wanxiang-lts-zh-hans.gram）
+      - name: Pack cn_dicts
+        run: |
+          mkdir -p dist
+          if [ -d "cn_dicts" ]; then
+            zip -r dist/cn_dicts.zip cn_dicts
+            echo "✅ Packing completed: dist/cn_dicts.zip"
+          else
+            echo "❌ Error: cn_dicts folder does not exist."
+            exit 1
+          fi
+
+      # ✅ 5. 删除旧的 Release 和 Tag（如果存在）
       - name: Delete existing Nightly Release and Tag
-        if: env.SKIP != 'true'
         uses: actions/github-script@v6
         with:
           github-token: ${{ secrets.GITHUB_TOKEN }}
           script: |
             const tag = "dict-nightly";
             try {
-              // 检查现有的 Release
               const releases = await github.rest.repos.listReleases({
                 owner: context.repo.owner,
                 repo: context.repo.repo
@@ -72,7 +78,6 @@ jobs:
                 });
               }
 
-              // 删除现有的 Tag
               console.log(`Deleting tag: ${tag}`);
               await github.rest.git.deleteRef({
                 owner: context.repo.owner,
@@ -80,28 +85,26 @@ jobs:
                 ref: `tags/${tag}`
               });
             } catch (error) {
-              console.log(`Error deleting Release or Tag: ${error.message}`);
+              console.log(`No existing Release/Tag found or failed to delete: ${error.message}`);
             }
 
-      # 确保删除后等待旧数据清理完成
+      # ✅ 6. 等待 GitHub 清理旧数据
       - name: Wait for cleanup
-        if: env.SKIP != 'true'
         run: sleep 10
 
-      # 创建新的 Release 并单独上传 `wanxiang-lts-zh-hans.gram`
+      # ✅ 7. 创建新的 Release，并上传 `cn_dicts.zip` 和 `wanxiang-lts-zh-hans.gram`
       - name: Create new Release
-        if: env.SKIP != 'true'
-        uses: "softprops/action-gh-release@v2"
+        uses: softprops/action-gh-release@v2
         with:
           token: ${{ secrets.GITHUB_TOKEN }}
           tag_name: dict-nightly
           name: "每夜构建-词库更新"
           body: |
             - `cn_dicts.zip`：最新的中文词库文件。
-            - `wanxiang-lts-zh-hans.gram`：独立的语法文件。
+            - `wanxiang-lts-zh-hans.gram`：从外部仓库获取的最新语法文件。
           files: |
             dist/cn_dicts.zip
             wanxiang-lts-zh-hans.gram
-          draft: false        # 确保不是草稿
-          prerelease: false   # 确保不是预发布版本
-          make_latest: true   # 强制标记为最新版本
+          draft: false
+          prerelease: false
+          make_latest: true

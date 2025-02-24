@@ -3,7 +3,7 @@
 #https://github.com/amzxyz/RIME-LMDG
 ---
 name: chars
-version: "2025-02-24 17:32"
+version: "2025-02-24 21:32"
 sort: by_weight
 ...
 啊	a;kk;kk;ka;oj;rr;dz;kb;kk;	915
@@ -18801,8 +18801,8 @@ sort: by_weight
 𨝎	kāng;ge;ge;ke;;il;xt;yv;;	1
 𨻷	kāng;el;en;ek;;ne;tk;by;;	1
 𪎵	kàng;cj;cj,nj;hk;;tn;no;am;;	1
-考	kǎo;lk;lv;lk;gr;js;qa;ft;uv;	812
-靠	kào;nf;nf;fg,nf;bu;hy;qr;tf;gf;	726
+靠	kào;nf;nf;fg,nf;bu;hy;qr;tf;gf;	812
+考	kǎo;lk;lv;lk;gr;js;qa;ft;uv;	726
 烤	kǎo;hk;hv;hk;tr;fs;ca;of;hk;	712
 拷	kǎo;fk;fv;fk;jr;qs;ua;rf;fk;	518
 铐	kào;jk;jv;jk;dr;os;za;qf;jk;	443
@@ -46617,8 +46617,8 @@ sort: by_weight
 𫑛	yuè;;ae;	1
 𫖵	yuè;;qr;	1
 彟	yuē;ey;ey;xh,xy;sl;se,xo;br;vf;xy;	1
-运	yùn;zy;zs;zy;uq;yi;bu;fc;zv;	795
-云	yún;ag,es;es;es,se;up;mi;by;fc;ev;	738
+云	yún;ag,es;es;es,se;up;mi;by;fc;ev;	798
+运	yùn;zy;zs;zy;uq;yi;bu;fc;zv;	735
 孕	yùn;nz;nz;zn;ra;nd;vh;eb;nz;	677
 允	yǔn;se;se;se;pk;iu;kp;cq;ve;	655
 匀	yún;bd;bd;gd;uf;pm;nw;qu;pd;	634
@@ -47154,8 +47154,8 @@ sort: by_weight
 𫁘	zào;;be;	1
 𫓇	zào;;jn;	1
 𫝰	zào;;bv,bd;	1
+则	zé;bd;kd;bd,db;mi;bn;op;mj;bd;	779
 择	zé;ff;fl;ff;jp;qq;uu;rc;fa;	774
-则	zé;bd;kd;bd,db;mi;bn;op;mj;bd;	771
 责	zé;fb;fr;bf,fb;am;qo;ao;gm;ar;	744
 泽	zé;df;dl;df;kp;eq;ku;ic;da;	671
 啧	zé;kb;kr;kz;om;ro;do;kg;kr;	514

@@ -296,8 +296,8 @@ patch:
     bindings:             # 也可以再增加方案专有的
       #- { when: composing, accept: Tab, send: '[' } ## 取消注释后：tab引导辅助码
       - { when: composing, accept: Control+w, send: Control+BackSpace }
-  #分号用于次选
-      - { when: has_menu, accept: semicolon, send: 2 }
+  #分号用于次选，搜狗、微软双拼不可启用
+      #- { when: has_menu, accept: semicolon, send: 2 }
   #使用Control+e进入翻译模式
       - { when: has_menu, accept: "Control+e", toggle: chinese_english }
   #使用快捷键Control+m/z分别开启和关闭墨奇或自然码辅助码拆分显示
@@ -324,7 +324,7 @@ patch:
   #  auto_select: true
   #  auto_select_pattern: ^[a-z]+/|^[a-df-zA-DF-Z]\w{3}|^e\w{4}
     # 如果不想让什么标点直接上屏，可以加在 alphabet，或者编辑标点符号为两个及以上的映射
-    alphabet: zyxwvutsrqponmlkjihgfedcbaZYXWVUTSRQPONMLKJIHGFEDCBA`/
+    alphabet: zyxwvutsrqponmlkjihgfedcbaZYXWVUTSRQPONMLKJIHGFEDCBA`;/
     # initials 定义仅作为始码的按键，排除 ` 让单个的 ` 可以直接上屏
     initials: zyxwvutsrqponmlkjihgfedcbaZYXWVUTSRQPONMLKJIHGFEDCBA
     delimiter: " '"  # 第一位<空格>是拼音之间的分隔符；第二位<'>表示可以手动输入单引号来分割拼音。
@@ -396,6 +396,7 @@ patch:
       - derive/^(.+);.*?,(bd|dw|df|dw|yl|rw|fs|iw)$/$1$2/
       - derive/^(.+);.*?,.*?,(bd|dw|df|dw|yl|rw|fs|iw)$/$1$2/
       - derive/^(.+);.*?,.*?,.*?,(bd|dw|df|dw|yl|rw|fs|iw)$/$1$2/
+      - xform/◯/;/  #对于微软双拼、搜狗双拼，前面将分号保护了起来，现在放出来让其发挥作用
       - erase/^(.+);(.+)$/    # 删除原始编码加速检索
   user_dict_set:
     dictionary: wanxiang

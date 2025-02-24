@@ -18,39 +18,14 @@ jobs:
       - name: Checkout repository
         uses: actions/checkout@v4
 
-      # ✅ 2. 获取 "amzxyz/RIME-LMDG" 的 `dict-nightly` Release 里的固定文件
-      - name: Get dict-nightly release file
-        id: get_source_release
+      # ✅ 2. 下载固定 Release 文件
+      - name: Download wanxiang-lts-zh-hans.gram
         run: |
-          SOURCE_REPO="amzxyz/RIME-LMDG" # ⚠️ 目标仓库
-          FILE_NAME="wanxiang-lts-zh-hans.gram" # 需要获取的文件名
-          TAG_NAME="dict-nightly" # 固定 Release tag
-
-          # 获取指定 tag（dict-nightly）的 Release API
-          API_URL="https://api.github.com/repos/$SOURCE_REPO/releases/tags/$TAG_NAME"
-          echo "🔍 查询 Release: $API_URL"
-          
-          # 获取 JSON 响应
-          RESPONSE=$(curl -s "$API_URL")
-
-          # 提取该 tag Release 里的 `wanxiang-lts-zh-hans.gram` 下载链接
-          DOWNLOAD_URL=$(echo "$RESPONSE" | jq -r ".assets[] | select(.name==\"$FILE_NAME\") | .browser_download_url")
-
-          if [ -z "$DOWNLOAD_URL" ] || [ "$DOWNLOAD_URL" == "null" ]; then
-            echo "❌ 未找到 $FILE_NAME，请检查 Release 是否包含该文件"
-            exit 1
-          fi
-
-          echo "✅ 找到文件，下载地址: $DOWNLOAD_URL"
-          echo "DOWNLOAD_URL=$DOWNLOAD_URL" >> $GITHUB_ENV
-
-      # ✅ 3. 下载该文件
-      - name: Download release file
-        run: |
-          wget -O wanxiang-lts-zh-hans.gram "$DOWNLOAD_URL"
+          FILE_URL="https://github.com/amzxyz/RIME-LMDG/releases/download/dict-nightly/wanxiang-lts-zh-hans.gram"
+          wget -O wanxiang-lts-zh-hans.gram "$FILE_URL"
           ls -lah wanxiang-lts-zh-hans.gram # 确保文件下载成功
 
-      # ✅ 4. 打包 cn_dicts.zip（不包含 wanxiang-lts-zh-hans.gram）
+      # ✅ 3. 打包 cn_dicts.zip（不包含 wanxiang-lts-zh-hans.gram）
       - name: Pack cn_dicts
         run: |
           mkdir -p dist
@@ -62,7 +37,7 @@ jobs:
             exit 1
           fi
 
-      # ✅ 5. 删除旧的 Release 和 Tag（如果存在）
+      # ✅ 4. 删除旧的 Release 和 Tag（如果存在）
       - name: Delete existing Nightly Release and Tag
         uses: actions/github-script@v6
         with:
@@ -95,11 +70,11 @@ jobs:
               console.log(`No existing Release/Tag found or failed to delete: ${error.message}`);
             }
 
-      # ✅ 6. 等待 GitHub 清理旧数据
+      # ✅ 5. 等待 GitHub 清理旧数据
       - name: Wait for cleanup
         run: sleep 10
 
-      # ✅ 7. 创建新的 Release，并上传 `cn_dicts.zip` 和 `wanxiang-lts-zh-hans.gram`
+      # ✅ 6. 创建新的 Release，并上传 `cn_dicts.zip` 和 `wanxiang-lts-zh-hans.gram`
       - name: Create new Release
         uses: softprops/action-gh-release@v2
         with:
@@ -108,7 +83,7 @@ jobs:
           name: "每夜构建-词库更新"
           body: |
             - `cn_dicts.zip`：最新的中文词库文件。
-            - `wanxiang-lts-zh-hans.gram`：与词库高度配合的语法模型。
+            - `wanxiang-lts-zh-hans.gram`：最新的语法模型文件。
           files: |
             dist/cn_dicts.zip
             wanxiang-lts-zh-hans.gram

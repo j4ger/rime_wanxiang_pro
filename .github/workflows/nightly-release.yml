@@ -18,23 +18,30 @@ jobs:
       - name: Checkout repository
         uses: actions/checkout@v4
 
-      # ✅ 2. 获取 "source-repo" 的最新 Release 文件 URL
-      - name: Get latest release from source repo
+      # ✅ 2. 获取 "amzxyz/RIME-LMDG" 的 `dict-nightly` Release 里的固定文件
+      - name: Get dict-nightly release file
         id: get_source_release
         run: |
-          SOURCE_REPO="amzxyz/RIME-LMDG" # ⚠️ 这里替换为你的目标仓库
+          SOURCE_REPO="amzxyz/RIME-LMDG" # ⚠️ 目标仓库
           FILE_NAME="wanxiang-lts-zh-hans.gram" # 需要获取的文件名
+          TAG_NAME="dict-nightly" # 固定 Release tag
 
-          # 获取最新 Release 的下载 URL
-          API_URL="https://api.github.com/repos/$SOURCE_REPO/releases/latest"
-          DOWNLOAD_URL=$(curl -s $API_URL | jq -r ".assets[] | select(.name==\"$FILE_NAME\") | .browser_download_url")
+          # 获取指定 tag（dict-nightly）的 Release API
+          API_URL="https://api.github.com/repos/$SOURCE_REPO/releases/tags/$TAG_NAME"
+          echo "🔍 查询 Release: $API_URL"
+          
+          # 获取 JSON 响应
+          RESPONSE=$(curl -s "$API_URL")
 
-          if [ -z "$DOWNLOAD_URL" ]; then
-            echo "❌ 未找到 $FILE_NAME，终止运行"
+          # 提取该 tag Release 里的 `wanxiang-lts-zh-hans.gram` 下载链接
+          DOWNLOAD_URL=$(echo "$RESPONSE" | jq -r ".assets[] | select(.name==\"$FILE_NAME\") | .browser_download_url")
+
+          if [ -z "$DOWNLOAD_URL" ] || [ "$DOWNLOAD_URL" == "null" ]; then
+            echo "❌ 未找到 $FILE_NAME，请检查 Release 是否包含该文件"
             exit 1
           fi
 
-          echo "🔗 下载地址: $DOWNLOAD_URL"
+          echo "✅ 找到文件，下载地址: $DOWNLOAD_URL"
           echo "DOWNLOAD_URL=$DOWNLOAD_URL" >> $GITHUB_ENV
 
       # ✅ 3. 下载该文件
@@ -101,7 +108,7 @@ jobs:
           name: "每夜构建-词库更新"
           body: |
             - `cn_dicts.zip`：最新的中文词库文件。
-            - `wanxiang-lts-zh-hans.gram`：从外部仓库获取的最新语法文件。
+            - `wanxiang-lts-zh-hans.gram`：与词库高度配合的语法模型。
           files: |
             dist/cn_dicts.zip
             wanxiang-lts-zh-hans.gram

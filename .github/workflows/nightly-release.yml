@@ -14,37 +14,49 @@ jobs:
     runs-on: ubuntu-22.04
 
     steps:
-      # ✅ 1. 检出当前仓库代码
+      # 检出代码
       - name: Checkout repository
         uses: actions/checkout@v4
 
-      # ✅ 2. 下载固定 Release 文件
-      - name: Download wanxiang-lts-zh-hans.gram
+      # 检查是否需要更新
+      - name: Check if cn_dicts or wanxiang-lts-zh-hans.gram has changes
+        id: check_changes
         run: |
-          FILE_URL="https://github.com/amzxyz/RIME-LMDG/releases/download/dict-nightly/wanxiang-lts-zh-hans.gram"
-          wget -O wanxiang-lts-zh-hans.gram "$FILE_URL"
-          ls -lah wanxiang-lts-zh-hans.gram # 确保文件下载成功
+          if git diff --quiet HEAD HEAD~1 -- cn_dicts wanxiang-lts-zh-hans.gram; then
+            echo "SKIP=true" >> $GITHUB_ENV
+          else
+            echo "SKIP=false" >> $GITHUB_ENV
+          fi
 
-      # ✅ 3. 打包 cn_dicts.zip（不包含 wanxiang-lts-zh-hans.gram）
+      # 条件跳过任务
+      - name: Skip if no changes
+        if: env.SKIP == 'true'
+        run: echo "No changes detected in 'cn_dicts' or 'wanxiang-lts-zh-hans.gram'. Skipping release process."
+
+      # 打包词库文件（但不包含 wanxiang-lts-zh-hans.gram）
       - name: Pack cn_dicts
+        if: env.SKIP != 'true'
         run: |
           mkdir -p dist
+          echo "Packing cn_dicts..."
           if [ -d "cn_dicts" ]; then
             zip -r dist/cn_dicts.zip cn_dicts
-            echo "✅ Packing completed: dist/cn_dicts.zip"
+            echo "Packing completed: dist/cn_dicts.zip"
           else
-            echo "❌ Error: cn_dicts folder does not exist."
+            echo "Error: cn_dicts folder does not exist."
             exit 1
           fi
 
-      # ✅ 4. 删除旧的 Release 和 Tag（如果存在）
+      # 删除旧的 Release 和 Tag（如果存在）
       - name: Delete existing Nightly Release and Tag
+        if: env.SKIP != 'true'
         uses: actions/github-script@v6
         with:
           github-token: ${{ secrets.GITHUB_TOKEN }}
           script: |
             const tag = "dict-nightly";
             try {
+              // 检查现有的 Release
               const releases = await github.rest.repos.listReleases({
                 owner: context.repo.owner,
                 repo: context.repo.repo
@@ -60,6 +72,7 @@ jobs:
                 });
               }
 
+              // 删除现有的 Tag
               console.log(`Deleting tag: ${tag}`);
               await github.rest.git.deleteRef({
                 owner: context.repo.owner,
@@ -67,26 +80,28 @@ jobs:
                 ref: `tags/${tag}`
               });
             } catch (error) {
-              console.log(`No existing Release/Tag found or failed to delete: ${error.message}`);
+              console.log(`Error deleting Release or Tag: ${error.message}`);
             }
 
-      # ✅ 5. 等待 GitHub 清理旧数据
+      # 确保删除后等待旧数据清理完成
       - name: Wait for cleanup
+        if: env.SKIP != 'true'
         run: sleep 10
 
-      # ✅ 6. 创建新的 Release，并上传 `cn_dicts.zip` 和 `wanxiang-lts-zh-hans.gram`
+      # 创建新的 Release 并单独上传 `wanxiang-lts-zh-hans.gram`
       - name: Create new Release
-        uses: softprops/action-gh-release@v2
+        if: env.SKIP != 'true'
+        uses: "softprops/action-gh-release@v2"
         with:
           token: ${{ secrets.GITHUB_TOKEN }}
           tag_name: dict-nightly
           name: "每夜构建-词库更新"
           body: |
             - `cn_dicts.zip`：最新的中文词库文件。
-            - `wanxiang-lts-zh-hans.gram`：最新的语法模型文件。
+            - `wanxiang-lts-zh-hans.gram`：与词库同步更新的语法模型。
           files: |
             dist/cn_dicts.zip
             wanxiang-lts-zh-hans.gram
-          draft: false
-          prerelease: false
-          make_latest: true
+          draft: false        # 确保不是草稿
+          prerelease: false   # 确保不是预发布版本
+          make_latest: true   # 强制标记为最新版本

@@ -86,8 +86,7 @@ patch:
     translators:
       - punct_translator
       - script_translator
-      - lua_translator@*date_translator    # 时间、日期、星期
-      - lua_translator@*lunar              # 农历
+      - lua_translator@*shijian            #农历、日期、节气、时间、周等等
       - lua_translator@*unicode            # Unicode
       - lua_translator@*number_translator  # 数字、金额大写
       - lua_translator@*calculator        # 计算器
@@ -112,7 +111,6 @@ patch:
       - simplifier@mars                               #火星文
       - simplifier@chinese_english                    #中英翻译
       - lua_filter@*search@radical_pinyin             # 部件拆字辅码放在简繁转换之后
-      #- lua_filter@*en_spacer                         #启用时中文状态下输入英文单词后面自动追加空格
       - lua_filter@*pro_comment_format                #超级注释模块，支持错词提示、辅助码显示，部件组字读音注释，支持个性化配置和关闭相应的功能，详情搜索pro_comment_format进行详细配置
       #- simplifier@moqi_chaifen                       #墨奇拆分型辅助码查询，放在超级注释后面
       #- simplifier@zrm_chaifen                        #自然码拆分型辅助码查询，放在超级注释后面
@@ -124,17 +122,7 @@ patch:
     corrector_type: "{comment}"  # 换一种显示类型，比如"({comment})" 
   ########################以下是方案配置######################################################
   
-# Lua 配置: 日期、时间、星期、ISO 8601、时间戳的触发关键字
-  date_translator:
-    date: /rq            # 日期： 2022-11-29
-    time: /sj            # 时间： 18:13
-    week: /wk            # 星期： 星期二
-    datetime: /dt    # ISO 8601： 2022-11-29T18:13:11+08:00
-    timestamp: /tt  # 时间戳： 1669716794
 
-# Lua 配置：农历的触发关键字
-  lunar: /nl  # 农历： 二〇二三年冬月二十 癸卯年（兔）冬月二十
-  
   # Lua 配置：计算器触发关键字
   calculator:
     trigger: "V"

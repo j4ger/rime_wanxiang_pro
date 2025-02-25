@@ -3,7 +3,7 @@
 #https://github.com/amzxyz/RIME-LMDG
 ---
 name: chars
-version: "2025-02-25 00:05"
+version: "2025-02-26 00:31"
 sort: by_weight
 ...
 啊	a;kk;kk;ka;oj;rr;dz;kb;kk;	915
@@ -18845,17 +18845,17 @@ sort: by_weight
 𩩾	kāo;gs;gy;gs,gy;;bu;fv;me;;	1
 𫝲	kāo;;ud;	1
 可	kě;dk;dk;dk;jj;mr;zk;sk;av;	889
+棵	kē;mg;mg;mg;ww;dd;ee;sj;lg;	856
+颗	kē;gy;gr;yg;vm;wo;qw;js;gr;	833
+克	kè;ux,ge;ue;eg,ux;sk;ju;cp;dq;ue;	812
 科	kē;hd;hu;hd;us;hj;xj;tu;hu;	804
 客	kè;bk;bk;bg;io;jr;ws;pt;gk;	786
-克	kè;ux,ge;ue;eg,ux;sk;ju;cp;dq;ue;	782
 课	kè;yg;yg;yg;cw;id;se;yj;yg;	737
 刻	kè;wd;wd;dh;ii;yn;kp;yn;wd;	719
-颗	kē;gy;gr;yg;vm;wo;qw;js;gr;	660
 壳	ké;tj;uj;uj;gi;gn,xn;go;fp;uj;	633
 柯	kē;mk;mk;mk;wj;dr;ez;ss;lk;	618
 渴	kě;dr;dv;dh;kr;ev;kf;ij;dv;	608
 咳	ké;kr;kr;kh;oe;ro;dk;ky;kr;	598
-棵	kē;mg;mg;mg;ww;dd;ee;sj;lg;	563
 磕	kē;um;um;uh,um;ta;mt;ma;df;um;	545
 苛	kē;ck;ck;ck;zj;tr;lz;as;ck;	544
 坷	kě;tk;tk;tk;gj;gr;gz;fs;tk;	498
@@ -48571,6 +48571,7 @@ sort: by_weight
 𪎻	zhèng;ci;ca,na;hi;;tm;nf;am;;	1
 𪨘	zhēng;;uk;	1
 𫖖	zhèng;;wa;	1
+支	zhī;uy;uy;uy;sl;je;ci;fc;uy;	855
 只	zhǐ;kb;kb;kb;of;rc;dh;kw;kb;	848
 值	zhí;rq;rq;rv;xd,xu;om;jf;wf;rv;	838
 知	zhī;uk;uk;uk,ku;eo;or;od;td;uk;	820
@@ -48582,7 +48583,6 @@ sort: by_weight
 指	zhǐ;fo;fo;fv;jv;qa;uo;rx;fo;	789
 智	zhì;uo;uo;ov;ev;oa;oo;td;uo;	779
 治	zhì;dk;dk;dt;ko;er;kd;ic;dk;	778
-支	zhī;uy;uy;uy;sl;je;ci;fc;uy;	777
 致	zhì;gw;aw;wv;dj;mk;yh;gc;vw;	767
 置	zhì;sq;sq;sv;ad,au;wm;yf;lf;sv;	763
 职	zhí;ev;eb;ev;df;sc;qh;bk;eb;	759
@@ -49924,12 +49924,12 @@ sort: by_weight
 𬤥	zhuàn;;yb;	1
 装	zhuāng;ly;dy;yv;lk;lv;at;uf;dh;	784
 状	zhuàng;lq;dq;jq,pq,qp;lb;lk;am;ud;dq;	752
+幢	zhuàng;jl;jl;jt;yg;lg;rd;mh;jl;	699
 庄	zhuāng;gt;gt;gt;rg;ig;xg;yf;gt;	681
 妆	zhuāng;ln;dn;jn,np,pn;ly;lv;ab;uv;dn;	668
 撞	zhuàng;fl;fl;ft;jg;qg;ud;ru;fl;	654
 壮	zhuàng;lt;du;ju,pu,up;lg;lg;ag;uf;du;	648
 桩	zhuāng;mt;mt;mv;wg;dg;eg;sy;lt;	560
-幢	zhuàng;jl;jl;jt;yg;lg;rd;mh;jl;	521
 裝	zhuāng;py;py;yv;;vv;at;nh;;	465
 狀	zhuàng;pq;pq;pq,qp;;vk;am;nh;;	411
 莊	zhuāng;ct;cu;cv;;tg;lg;an;;	342
